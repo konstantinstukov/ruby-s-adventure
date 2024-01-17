@@ -11,12 +11,17 @@ public class RubyController : MonoBehaviour
     {
         get { return maxHealth; }
     }
-    [SerializeField] float speed = 3.0f;
+
     int currentHealth;
     public int CurrentHealth
     {
         get { return currentHealth; }
     }
+
+    [SerializeField] float speed = 3.0f;
+    bool isInvictible;
+    float invictibleTimer;
+    float invictibleTime = 2.0f;
 
     Rigidbody2D rb;
     float horizontalInput;
@@ -34,6 +39,14 @@ public class RubyController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+
+        if (isInvictible)
+        {
+            invictibleTimer -= Time.deltaTime;
+            if (invictibleTimer < 0)
+                isInvictible = false;
+
+        }
     }
 
     void FixedUpdate()
@@ -47,6 +60,15 @@ public class RubyController : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
+        if (amount < 0)
+        {
+            if (isInvictible)
+                return;
+
+            isInvictible = true;
+            invictibleTimer = invictibleTime;
+        }
+
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
