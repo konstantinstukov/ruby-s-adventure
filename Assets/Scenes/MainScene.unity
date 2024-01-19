@@ -4247,9 +4247,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2422625127610246919, guid: a241192a6597db242a58bb1a73bc5872, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fe61ef132ece08b448022acb5587602f, type: 2}
     - target: {fileID: 3261115757225576568, guid: a241192a6597db242a58bb1a73bc5872, type: 3}
       propertyPath: m_Name
       value: Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562957132917943805, guid: a241192a6597db242a58bb1a73bc5872, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.52569884
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562957132917943805, guid: a241192a6597db242a58bb1a73bc5872, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.52569884
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562957132917943805, guid: a241192a6597db242a58bb1a73bc5872, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.52569884
       objectReference: {fileID: 0}
     - target: {fileID: 5562957132917943805, guid: a241192a6597db242a58bb1a73bc5872, type: 3}
       propertyPath: m_LocalPosition.x
