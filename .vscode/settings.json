@@ -56,5 +56,10 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ruby-s-adventure.sln"
+    "dotnet.defaultSolution": "ruby-s-adventure.sln",
+    "cSpell.words": [
+        "Behaviour",
+        "Mathf",
+        "Rigidbody"
+    ]
 }

@@ -19,18 +19,24 @@ public class RubyController : MonoBehaviour
     }
 
     [SerializeField] float speed = 3.0f;
-    bool isInvictible;
-    float invictibleTimer;
-    float invictibleTime = 2.0f;
+    bool isInvincible;
+    float invincibleTimer;
+    float invincibleTime = 2.0f;
 
     Rigidbody2D rb;
+    Animator animator;
+
     float horizontalInput;
     float verticalInput;
+
+    Vector2 lookDirection = new Vector2(1, 0);
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
         currentHealth = maxHealth;
     }
 
@@ -40,12 +46,22 @@ public class RubyController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        if (isInvictible)
-        {
-            invictibleTimer -= Time.deltaTime;
-            if (invictibleTimer < 0)
-                isInvictible = false;
+        Vector2 move = new Vector2(horizontalInput, verticalInput);
 
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f)) {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
+
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+                isInvincible = false;
         }
     }
 
@@ -62,11 +78,13 @@ public class RubyController : MonoBehaviour
     {
         if (amount < 0)
         {
-            if (isInvictible)
+            animator.SetTrigger("Hit");
+
+            if (isInvincible)
                 return;
 
-            isInvictible = true;
-            invictibleTimer = invictibleTime;
+            isInvincible = true;
+            invincibleTimer = invincibleTime;
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4851014223027047521}
   - component: {fileID: 4199380996012983092}
   - component: {fileID: 7998270792254758738}
-  - component: {fileID: -8815980442304818072}
   - component: {fileID: 2422625127610246919}
+  - component: {fileID: -7412825426426216305}
   m_Layer: 0
   m_Name: Bot
   m_TagString: Untagged
@@ -160,21 +160,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2299088, y: 0.5648633}
   m_EdgeRadius: 0
---- !u!114 &-8815980442304818072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3261115757225576568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e75f0aae0cb5b43a67e73b556e16a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  vertical: 0
-  changeTime: 1
 --- !u!95 &2422625127610246919
 Animator:
   serializedVersion: 5
@@ -196,3 +181,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-7412825426426216305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3261115757225576568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e75f0aae0cb5b43a67e73b556e16a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  vertical: 0
+  changeTime: 3
