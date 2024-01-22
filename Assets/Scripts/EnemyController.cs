@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public float changeTime = 3.0f;
     float timer;
     int direction = 1;
+    bool broken;
 
     Rigidbody2D rb;
     Animator animator;
@@ -18,6 +19,10 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         timer = changeTime;
+
+    if (broken) {
+        return;
+    }
     }
 
     void Update()
@@ -33,6 +38,10 @@ public class EnemyController : MonoBehaviour
 
             timer = changeTime;
             vertical = !vertical;
+        }
+
+        if (!broken) {
+            return;
         }
     }
 
@@ -64,5 +73,10 @@ public class EnemyController : MonoBehaviour
 
         if (player != null)
             player.ChangeHealth(-1);
+    }
+
+    public void Fix() {
+        broken = false;
+        rb.simulated = false;
     }
 }
