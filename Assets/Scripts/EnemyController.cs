@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
+    public ParticleSystem smokeEffect;
 
     void Start()
     {
@@ -20,9 +21,10 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
         timer = changeTime;
 
-    if (broken) {
-        return;
-    }
+        if (broken)
+        {
+            return;
+        }
     }
 
     void Update()
@@ -31,16 +33,18 @@ public class EnemyController : MonoBehaviour
 
         if (timer < 0)
         {
-            if (vertical) {
-            direction = -direction;
-            timer = changeTime;
+            if (vertical)
+            {
+                direction = -direction;
+                timer = changeTime;
             }
 
             timer = changeTime;
             vertical = !vertical;
         }
 
-        if (!broken) {
+        if (!broken)
+        {
             return;
         }
     }
@@ -75,10 +79,13 @@ public class EnemyController : MonoBehaviour
             player.ChangeHealth(-1);
     }
 
-    public void Fix() {
+    public void Fix()
+    {
         broken = false;
         rb.simulated = false;
 
         animator.SetTrigger("Fixed");
+
+        smokeEffect.Stop();
     }
 }
