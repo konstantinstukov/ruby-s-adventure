@@ -15,11 +15,16 @@ public class EnemyController : MonoBehaviour
     Animator animator;
     public ParticleSystem smokeEffect;
 
+    AudioSource audioSource;
+    public AudioClip fixClip;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         timer = changeTime;
+        
+        audioSource = GetComponent<AudioSource>();
 
         if (broken)
         {
@@ -81,11 +86,18 @@ public class EnemyController : MonoBehaviour
 
     public void Fix()
     {
+        PlaySound(fixClip);
+
         broken = false;
         rb.simulated = false;
 
         animator.SetTrigger("Fixed");
 
         smokeEffect.Stop();
+    }
+
+        void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

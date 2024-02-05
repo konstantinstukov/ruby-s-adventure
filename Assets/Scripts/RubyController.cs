@@ -6,6 +6,28 @@ using UnityEngine.PlayerLoop;
 
 public class RubyController : MonoBehaviour
 {
+    Rigidbody2D rb;
+    Animator animator;
+    AudioSource audioSource;
+
+    public AudioClip takeDamegeClip;
+    public AudioClip throwProjectileClip;
+    public AudioClip footStepsClip;
+    public GameObject footStepsObj;
+
+    Vector2 lookDirection = new Vector2(1, 0);
+
+    [SerializeField] float speed = 3.0f;
+    bool isInvincible;
+    float invincibleTimer;
+    float invincibleTime = 2.0f;
+
+    float horizontalInput;
+    float verticalInput;
+
+    public GameObject projectilePrefab;
+
+
     [SerializeField] int maxHealth = 5;
     public int MaxHealth
     {
@@ -18,27 +40,13 @@ public class RubyController : MonoBehaviour
         get { return currentHealth; }
     }
 
-    [SerializeField] float speed = 3.0f;
-    bool isInvincible;
-    float invincibleTimer;
-    float invincibleTime = 2.0f;
-
-    Rigidbody2D rb;
-    Animator animator;
-
-    float horizontalInput;
-    float verticalInput;
-
-    Vector2 lookDirection = new Vector2(1, 0);
-
-    public GameObject projectilePrefab;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
         currentHealth = maxHealth;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -103,6 +111,8 @@ public class RubyController : MonoBehaviour
 
             isInvincible = true;
             invincibleTimer = invincibleTime;
+            PlaySound(takeDamegeClip);
+
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
@@ -116,5 +126,16 @@ public class RubyController : MonoBehaviour
         projectile.Launch(lookDirection, 300);
 
         animator.SetTrigger("Launch");
+
+        PlaySound(throwProjectileClip);
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+
+    void StepSoundPlay() {
+        audioSource.PlayOneShot(footStepsClip);
     }
 }
