@@ -86,6 +86,9 @@ public class EnemyController : MonoBehaviour
 
     public void Fix()
     {
+        audioSource.loop = false;
+        audioSource.playOnAwake = false;
+
         PlaySound(fixClip);
 
         broken = false;
