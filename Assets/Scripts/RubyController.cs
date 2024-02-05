@@ -60,6 +60,9 @@ public class RubyController : MonoBehaviour
         {
             lookDirection.Set(move.x, move.y);
             lookDirection.Normalize();
+
+            if (!audioSource.isPlaying)
+                PlaySound(footStepsClip);
         }
 
         animator.SetFloat("Look X", lookDirection.x);
@@ -133,9 +136,5 @@ public class RubyController : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
-    }
-
-    void StepSoundPlay() {
-        audioSource.PlayOneShot(footStepsClip);
     }
 }

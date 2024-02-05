@@ -190,6 +190,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5927696467131671370, guid: 3e68c3bd14272724f858f08a44d87700, type: 3}
   m_PrefabInstance: {fileID: 1721003808}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &160929194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 160929195}
+  - component: {fileID: 160929196}
+  m_Layer: 0
+  m_Name: Listener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &160929195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160929194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 877286875}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &160929196
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160929194}
+  m_Enabled: 1
 --- !u!1001 &168708273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15274,7 +15314,6 @@ GameObject:
   m_Component:
   - component: {fileID: 877286875}
   - component: {fileID: 877286874}
-  - component: {fileID: 877286873}
   - component: {fileID: 877286876}
   m_Layer: 0
   m_Name: Main Camera
@@ -15283,14 +15322,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &877286873
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877286872}
-  m_Enabled: 1
 --- !u!20 &877286874
 Camera:
   m_ObjectHideFlags: 0
@@ -15354,7 +15385,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 2, z: -10}
   m_LocalScale: {x: 0.46967, y: 0.46967, z: 0.46967}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 160929195}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &877286876
@@ -16335,11 +16367,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8819301317071245692, guid: f35e7c70ebedc964eb7cbbab2c22ad39, type: 3}
   m_PrefabInstance: {fileID: 2166863069225677456}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1489896328 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3202878439516124316, guid: ebe80a705fd12884ca38b41505b1693e, type: 3}
-  m_PrefabInstance: {fileID: 4847703229528037378}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1499326634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6066363609022996283, guid: 9b21d595c48de4f13b17619ead346b7a, type: 3}
@@ -16504,7 +16531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1582289603
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16998,7 +17025,7 @@ GameObject:
   - component: {fileID: 1994360884}
   - component: {fileID: 1994360883}
   m_Layer: 10
-  m_Name: CamraConfiner
+  m_Name: CameraConfiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17874,10 +17901,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5839878107928903580, guid: ebe80a705fd12884ca38b41505b1693e, type: 3}
-      propertyPath: footStepsSound
-      value: 
-      objectReference: {fileID: 1489896328}
     - target: {fileID: 7064937101989040605, guid: ebe80a705fd12884ca38b41505b1693e, type: 3}
       propertyPath: m_Name
       value: Ruby
